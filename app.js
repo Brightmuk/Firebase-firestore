@@ -12,7 +12,9 @@ function renderCafe(doc){
 
     li.setAttribute('data-id',doc.id)
     name.textContent=doc.data().name;
+    name.setAttribute('id','name');
     city.textContent=doc.data().city;
+    city.setAttribute('id','city');
     deleter.textContent='delete';
     //open edit modal button
     editer.textContent='edit';
@@ -26,7 +28,7 @@ function renderCafe(doc){
     li.appendChild(city);
     li.appendChild(deleter);
     li.appendChild(editer);
-
+    
     cafeList.appendChild(li);
 
     //delete
@@ -52,6 +54,8 @@ function renderCafe(doc){
             name:editForm.name.value,
             city:editForm.city.value
         });
+        cafeList.querySelector('[data-id').querySelector('#name').innerHTML=editForm.name.value;
+        cafeList.querySelector('[data-id').querySelector('#city').innerHTML=editForm.city.value;
     })
 }
 
@@ -67,6 +71,7 @@ addCafeform.addEventListener('submit', (e)=>{
 
 db.collection("cafe's").orderBy('name').onSnapshot(snapshot=>{
     let changes = snapshot.docChanges();
+    console.log(changes)
     changes.forEach(change => {
        if (change.type=='added'){
            renderCafe(change.doc);
