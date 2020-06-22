@@ -6,16 +6,20 @@ function renderCafe(doc){
     let name=document.createElement('span');
     let city = document.createElement('span');
     let deleter=document.createElement('div');
-
+    let editer=document.createElement('p');
 
     li.setAttribute('data-id',doc.id)
     name.textContent=doc.data().name;
     city.textContent=doc.data().city;
-    deleter.textContent='x';
+    deleter.textContent='delete';
+    editer.textContent='edit';
+    
+    
 
     li.appendChild(name);
     li.appendChild(city);
     li.appendChild(deleter);
+    li.appendChild(editer);
 
     cafeList.appendChild(li);
 

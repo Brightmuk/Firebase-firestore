@@ -35,7 +35,7 @@ li{
     color: #555;
     position: relative;
     border-bottom: 1px solid #e6e6e6;
-    height: 46px;
+    
 }
 
 li:nth-child(even){
@@ -56,12 +56,22 @@ li span:nth-child(2){
 li div{
     position: absolute;
     top: 0;
-    right: 0px;
-    background: rgba(255,255,255,0.6);
+    right:5%;
     width: 40px;
     text-align: center;
     padding: 10px 0;
-    font-weight:  bold;
+    color:grey;
+    cursor:  pointer;
+    
+}
+li p{
+    position: absolute;
+    top: 0;
+    right:15%;
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    color:grey;
     cursor:  pointer;
 }
 
@@ -76,8 +86,13 @@ form input{
     display: block;
     box-sizing: border-box;
     font-size: 18px;
+    
 }
-
+::placeholder {
+    color: rgb(168, 167, 167);
+    font-weight: 100;
+    
+  }
 form input:focus{
     outline: none;
     border-bottom: 3px solid #292829;
@@ -94,7 +109,7 @@ form:after{
 button{
     border: 0;
     background: #fff;
-    
+    border-top-right-radius: 50px;
     padding: 13px;
     width: 14%;
     box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
@@ -102,4 +117,11 @@ button{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     letter-spacing: 1px;
     color: #999;
+}
+#new{
+    float:left;
+    color:rgb(134, 133, 133);
+}
+.edit{
+float:right;
 }
