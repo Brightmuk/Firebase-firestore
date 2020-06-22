@@ -6,14 +6,18 @@ function renderCafe(doc){
     let name=document.createElement('span');
     let city = document.createElement('span');
     let deleter=document.createElement('div');
-    let editer=document.createElement('p');
+    let editer=document.createElement('button');
 
     li.setAttribute('data-id',doc.id)
     name.textContent=doc.data().name;
     city.textContent=doc.data().city;
     deleter.textContent='delete';
+    //open edit modal button
     editer.textContent='edit';
-    
+    editer.setAttribute("type", "button");
+    editer.setAttribute("class", "btn edit");
+    editer.setAttribute("data-toggle", "modal");
+    editer.setAttribute("data-target", "#exampleModal");
     
 
     li.appendChild(name);
@@ -29,14 +33,19 @@ function renderCafe(doc){
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection("cafe's").doc(id).delete();
     })
+    //edit
+    //todo: create a submit edit on modal
+    editer-submit.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute('data-id');
+        db.collection("cafe's").doc(id).update({
+            //todo:remove null to actual values
+            name:null,
+            city:null
+        });
+    })
 }
-// //get
-// db.collection("cafe's").orderBy('name').get().then((snapshot)=>{
-// snapshot.docs.forEach(doc => {
-//     renderCafe(doc);
-// });
-// })
-//save
+
 addCafeform.addEventListener('submit', (e)=>{
     e.preventDefault();
     db.collection("cafe's").add({

@@ -62,17 +62,15 @@ li div{
     padding: 10px 0;
     color:grey;
     cursor:  pointer;
-    
+    font-size: 16px;
 }
-li p{
-    position: absolute;
-    top: 0;
+.edit{
     right:15%;
-    width: 40px;
-    text-align: center;
-    padding: 10px 0;
+    position:absolute;
+    margin:0;
+    top:3%;
     color:grey;
-    cursor:  pointer;
+    
 }
 
 form input{
@@ -106,7 +104,7 @@ form:after{
     display: block;
 }
 
-button{
+form button{
     border: 0;
     background: #fff;
     border-top-right-radius: 50px;
@@ -121,7 +119,4 @@ button{
 #new{
     float:left;
     color:rgb(134, 133, 133);
-}
-.edit{
-float:right;
 }
