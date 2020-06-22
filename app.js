@@ -1,5 +1,7 @@
 const addCafeform = document.querySelector('#add-cafe-form');
 const cafeList = document.querySelector('#cafe-list');
+const toEdit=document.querySelector('#modal-body');
+const editForm=document.querySelector('#edit-cafe-form');
 
 function renderCafe(doc){
     let li=document.createElement('li');
@@ -17,7 +19,7 @@ function renderCafe(doc){
     editer.setAttribute("type", "button");
     editer.setAttribute("class", "btn edit");
     editer.setAttribute("data-toggle", "modal");
-    editer.setAttribute("data-target", "#exampleModal");
+    editer.setAttribute("data-target", "#editModal");
     
 
     li.appendChild(name);
@@ -33,15 +35,22 @@ function renderCafe(doc){
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection("cafe's").doc(id).delete();
     })
+    
+    //reference data to be edited
+    editer.addEventListener('click',(e)=>{
+        let id = e.target.parentElement.getAttribute('data-id');
+        db.collection("cafe's").doc(id);
+        editForm.setAttribute('data-id',doc.id);
+        document.getElementById('edit-name').setAttribute('value', doc.data().name);
+        document.getElementById('edit-city').setAttribute('value', doc.data().city);
+    })
     //edit
-    //todo: create a submit edit on modal
-    editer-submit.addEventListener('click',(e)=>{
-        e.stopPropagation();
+    let editerSubmit=document.getElementById('edit-submit');
+    editerSubmit.addEventListener('click',(e)=>{
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection("cafe's").doc(id).update({
-            //todo:remove null to actual values
-            name:null,
-            city:null
+            name:editForm.name.value,
+            city:editForm.city.value
         });
     })
 }

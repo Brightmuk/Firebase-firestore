@@ -120,3 +120,6 @@ form button{
     float:left;
     color:rgb(134, 133, 133);
 }
+.modal button{
+    color:grey
+}
